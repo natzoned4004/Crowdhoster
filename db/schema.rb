@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703163000) do
+ActiveRecord::Schema.define(:version => 20130809193015) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130703163000) do
     t.string   "additional_info_label"
     t.boolean  "include_comments",                     :default => false,        :null => false
     t.string   "comments_shortname"
+    t.boolean  "indexable",                            :default => true
   end
 
   add_index "campaigns", ["slug"], :name => "index_campaigns_on_slug", :unique => true

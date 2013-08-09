@@ -10,6 +10,12 @@
     </div>
 
     <div class="field clearfix">
+      <p class="explanation">If you disable this, users will not be able to find your campaigns from search engines such as google.</p>
+      <label>Allow search engines to index my campaign?</label>
+      <%= f.check_box :indexable %>
+    </div>
+
+    <div class="field clearfix">
       <p class="explanation">You can choose to set your goal based on the dollar amount you raise, or by the number of orders your contributors make.</p>
       <label>Goal</label>
       <label><input id="goal_type_dollars" name="campaign[goal_type]" value="dollars" type="radio" <%= @campaign.goal_type == 'dollars' ? "checked" : "" %>>Dollar Amount</label>
