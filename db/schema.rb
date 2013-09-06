@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906183823) do
+ActiveRecord::Schema.define(:version => 20130906202515) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -168,7 +168,10 @@ ActiveRecord::Schema.define(:version => 20130906183823) do
     t.string   "api_key"
     t.string   "reply_to_email",              :default => "team@crowdhoster.com", :null => false
     t.text     "custom_js"
+    t.string   "subdomain",                                                       :null => false
   end
+
+  add_index "sites", ["subdomain"], :name => "index_sites_on_subdomain", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
