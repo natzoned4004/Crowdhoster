@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830004146) do
+ActiveRecord::Schema.define(:version => 20130906181452) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20130830004146) do
     t.boolean  "visible_flag",  :default => true, :null => false
   end
 
-  create_table "settings", :force => true do |t|
+  create_table "sites", :force => true do |t|
     t.string   "site_name",                   :default => "Crowdhoster",          :null => false
     t.string   "facebook_app_id"
     t.string   "tweet_text"
