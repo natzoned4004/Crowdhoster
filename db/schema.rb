@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906202515) do
+ActiveRecord::Schema.define(:version => 20130909221117) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(:version => 20130906202515) do
     t.string   "additional_info_label"
     t.boolean  "include_comments",                     :default => false,        :null => false
     t.string   "comments_shortname"
+    t.integer  "site_id",                                                        :null => false
   end
 
+  add_index "campaigns", ["site_id"], :name => "index_campaigns_on_site_id"
   add_index "campaigns", ["slug"], :name => "index_campaigns_on_slug", :unique => true
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -97,7 +99,10 @@ ActiveRecord::Schema.define(:version => 20130906202515) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "campaign_id"
+    t.integer  "site_id",     :null => false
   end
+
+  add_index "faqs", ["site_id"], :name => "index_faqs_on_site_id"
 
   create_table "payments", :force => true do |t|
     t.string   "ct_payment_id"
@@ -124,7 +129,10 @@ ActiveRecord::Schema.define(:version => 20130906202515) do
     t.integer  "reward_id"
     t.text     "additional_info"
     t.string   "billing_postal_code"
+    t.integer  "site_id",               :null => false
   end
+
+  add_index "payments", ["site_id"], :name => "index_payments_on_site_id"
 
   create_table "rewards", :force => true do |t|
     t.string   "title"
@@ -136,7 +144,10 @@ ActiveRecord::Schema.define(:version => 20130906202515) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "visible_flag",  :default => true, :null => false
+    t.integer  "site_id",                         :null => false
   end
+
+  add_index "rewards", ["site_id"], :name => "index_rewards_on_site_id"
 
   create_table "sites", :force => true do |t|
     t.string   "site_name",                   :default => "Crowdhoster",          :null => false
